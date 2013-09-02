@@ -1,0 +1,4 @@
+name = Do Something
+description = A module that displays something in an URL
+core = 7.x
+files[] = do_something.module

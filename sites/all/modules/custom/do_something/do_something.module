@@ -1,0 +1,48 @@
+<?php
+/**
+* @file
+* A module that displays something in an URL.
+*/
+
+/**
+* Implements hook_help.
+*
+* Displays help and module information.
+*
+* @param path
+*   Which path of the site we're using to display help
+* @param arg
+*   Array that holds the current path as returned from arg() function
+*/
+function do_something_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#do_something":
+      return '<p>' . t("Displays something in an URL") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Implementation hook_menu().
+ */
+function do_something_menu() {
+  $items['rock'] = array(
+    'title' => 'Do Something',
+    'page callback' => 'do_something_view',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implementation hook_view().
+ */
+function do_something_view() {
+  $items = array(
+    'data1' => 'Deep Purple',
+    'data2' => 'Led Zeppelin',
+    'data3' => 'Franz Ferdinand',
+  );
+  return theme('item_list', array('items' => $items));
+}
